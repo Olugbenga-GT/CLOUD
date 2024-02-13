@@ -1,0 +1,15 @@
+@font-face{
+    font-family: 'Visby CF';
+    src: url('./fonts/OTF/VisbyCF-Medium.otf') format("opentype");
+    src: url('./fonts/Webfont/VisbyCF-Medium.ttf') format('truetype'),
+        url('./fonts/Webfont/VisbyCF-Medium.woff') format('woff'),
+        url('./fonts/Webfont/VisbyCF-Medium.eot'),
+        url('./fonts/Webfont/VisbyCF-Medium.eot?#iefix') format('embedded-opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+}
+
+html{
+	font-family: 'Visby CF';
+}
