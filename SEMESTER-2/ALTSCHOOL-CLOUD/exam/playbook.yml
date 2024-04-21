@@ -1,0 +1,24 @@
+---
+- hosts: 192.168.56.24
+  become: yes
+  tasks:
+    - name: Copy lamp_deployment.sh script to Slave node
+      copy:
+        src: /home/vagrant/lamp_deployment.sh
+        dest: /home/vagrant/lamp_deployment.sh
+        mode: 0755
+
+    - name: Execute lamp_deployment.sh script on Slave node
+      shell: /home/vagrant/lamp_deployment.sh
+
+    - name: verify php application accessibility
+      shell: "curl http://192.168.56.24/var/www/laravel"
+      register: result
+      ignore_errors: yes
+
+    - name: Add cron job to check server uptime
+      cron:
+              name: Check server uptime
+              minute: "0"
+              hour: "0"
+              job: /bin/uptime >> /var/log/server_uptime.log
